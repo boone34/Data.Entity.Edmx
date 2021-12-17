@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Edmx">
+    <Position X="0.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Edmx.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Runtime" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Runtime">
+    <Position X="3.25" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAEAAAAAAAAAAAAAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>Runtime.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Edmx" />
+      <Property Name="Mapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.Mapping">
+    <Position X="6" Y="0.75" Width="2" />
+    <AssociationLine Name="EntityContainerMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.19" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAACAEAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Map\Mapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Runtime" />
+      <Property Name="EntityContainerMapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping">
+    <Position X="0.5" Y="3.25" Width="7.25" />
+    <AssociationLine Name="Mapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.Mapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.69" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="AssociationSetMappings" Type="TechNoir.Data.Entity.Edmx.Model.Map.AssociationSetMapping">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.572" Y="0.249" Height="0.182" Width="1.713" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="EntitySetMappings" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntitySetMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.315" Y="0.235" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="FunctionImportMappings" Type="TechNoir.Data.Entity.Edmx.Model.Map.FunctionImportMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.815" Y="0.235" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAgBAAAAAAAAAAAAGCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map\EntityContainerMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Mapping" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="AssociationSetMappings" />
+      <Property Name="EntitySetMappings" />
+      <Property Name="FunctionImportMappings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.AssociationSetMapping">
+    <Position X="0.5" Y="6" Width="2.5" />
+    <AssociationLine Name="EntityContainerMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.44" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ACAAAQAAAAAAAAAAABAAAAAYAAAAAhAAAAQAAAAAAAA=</HashCode>
+      <FileName>Map\AssociationSetMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityContainerMapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntitySetMapping">
+    <Position X="3.25" Y="6" Width="2.25" />
+    <AssociationLine Name="EntityContainerMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.39" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAABAAAAAAAASBAKIAAAAAAAAgQIAEQAAAAAACI=</HashCode>
+      <FileName>Map\EntitySetMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityContainerMapping" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.FunctionImportMapping">
+    <Position X="5.75" Y="6" Width="2" />
+    <AssociationLine Name="EntityContainerMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.39" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAABCAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Map\FunctionImportMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityContainerMapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

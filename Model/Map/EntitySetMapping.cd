@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntitySetMapping">
+    <Position X="2" Y="4.25" Width="11.25" />
+    <AssociationLine Name="ComplexProperties" Type="TechNoir.Data.Entity.Edmx.Model.Map.ComplexProperty&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.315" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Conditions" Type="TechNoir.Data.Entity.Edmx.Model.Map.Condition&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.44" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="EntityTypeMappings" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityTypeMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.69" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="MappingFragments" Type="TechNoir.Data.Entity.Edmx.Model.Map.MappingFragment&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.315" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="QueryViews" Type="TechNoir.Data.Entity.Edmx.Model.Map.QueryView">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.44" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ScalarProperties" Type="TechNoir.Data.Entity.Edmx.Model.Map.ScalarProperty&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.315" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAQBAKAAAAAAAAAgQIAEQAAAAAAAI=</HashCode>
+      <FileName>Map\EntitySetMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityContainerMapping" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ComplexProperties" />
+      <Property Name="Conditions" />
+      <Property Name="EntityTypeMappings" />
+      <Property Name="MappingFragments" />
+      <Property Name="QueryViews" />
+      <Property Name="ScalarProperties" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntityContainerMapping" Collapsed="true">
+    <Position X="7.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAgBAAAAAAAAAAAAGCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map\EntityContainerMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.ComplexProperty&lt;TParent&gt;">
+    <Position X="2.75" Y="7" Width="2.75" />
+    <AssociationLine Name="Conditions" Type="TechNoir.Data.Entity.Edmx.Model.Map.Condition&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.44" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ScalarProperties" Type="TechNoir.Data.Entity.Edmx.Model.Map.ScalarProperty&lt;TParent&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="4.875" Y="9.132" />
+        <Point X="4.875" Y="10" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.065" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ComplexProperties" Type="TechNoir.Data.Entity.Edmx.Model.Map.ComplexProperty&lt;TParent&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.562" Y="9.132" />
+        <Point X="3.562" Y="9.382" />
+        <Point X="4.75" Y="9.382" />
+        <Point X="4.75" Y="9.132" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQBAAQAQAAAAAABAoAAAAAAAAAAA=</HashCode>
+      <FileName>Map\ComplexProperty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Conditions" />
+      <Property Name="ScalarProperties" />
+      <Property Name="ComplexProperties" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.Condition&lt;TParent&gt;">
+    <Position X="2" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAQAQAAAAAAAAIAAAgAAAAAAA=</HashCode>
+      <FileName>Map\Condition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntityTypeMapping">
+    <Position X="8" Y="7" Width="4.5" />
+    <AssociationLine Name="EntitySetMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntitySetMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.565" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="MappingFragments" Type="TechNoir.Data.Entity.Edmx.Model.Map.MappingFragment&lt;TParent&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.815" Y="0.36" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ModificationFunctionMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntityTypeModificationFunctionMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.94" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAIAAAAAAAAAAQAAAAAAEAAAAA=</HashCode>
+      <FileName>Map\EntityTypeMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntitySetMapping" />
+      <Property Name="ModificationFunctionMapping" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="MappingFragments" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.MappingFragment&lt;TParent&gt;">
+    <Position X="11.25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQBAAQAAAAAAAAAAIAAAAAAAAAAY=</HashCode>
+      <FileName>Map\MappingFragment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.QueryView">
+    <Position X="6" Y="7" Width="1.75" />
+    <AssociationLine Name="EntitySetMapping" Type="TechNoir.Data.Entity.Edmx.Model.Map.EntitySetMapping">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.39" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAEAAAAA=</HashCode>
+      <FileName>Map\QueryView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntitySetMapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.ScalarProperty&lt;TParent&gt;">
+    <Position X="4" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAQAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map\ScalarProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TechNoir.Data.Entity.Edmx.Model.Map.EntityTypeModificationFunctionMapping">
+    <Position X="8" Y="9.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAEgAAAAAAgA=</HashCode>
+      <FileName>Map\EntityTypeModificationFunctionMapping.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EntityTypeMapping" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

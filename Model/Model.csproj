@@ -15,13 +15,27 @@
     <PackageTags>Entity Framework Core entity-framework entity-framework-core ef efcore edmx</PackageTags>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <RepositoryUrl>https://github.com/boone34/Data.Entity.Edmx</RepositoryUrl>
     <PackageProjectUrl>https://github.com/boone34/Data.Entity.Edmx</PackageProjectUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <RepositoryUrl>https://github.com/boone34/Data.Entity.Edmx</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\License.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Serialization\Serialization.csproj" />
   </ItemGroup>
 </Project>
