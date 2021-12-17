@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T4", "T4\T4.csproj", "{651FEF73-6885-4F9C-840C-B4252B603DEE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{539F1400-B592-45AB-BD71-1A489E5316A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WideWorldImporters", "WideWorldImporters", "{A09CB28C-4B4A-4521-87EA-03394E9E8818}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{A7FB2A6C-3CDF-447A-9AB8-9AAD68784149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edmx", "Samples\WildWorldImporters\Sales\Edmx\Edmx.csproj", "{05B69369-FD25-41EA-87C3-201C8CB082BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +35,18 @@ Global
 		{651FEF73-6885-4F9C-840C-B4252B603DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{651FEF73-6885-4F9C-840C-B4252B603DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{651FEF73-6885-4F9C-840C-B4252B603DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B69369-FD25-41EA-87C3-201C8CB082BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B69369-FD25-41EA-87C3-201C8CB082BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B69369-FD25-41EA-87C3-201C8CB082BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B69369-FD25-41EA-87C3-201C8CB082BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A09CB28C-4B4A-4521-87EA-03394E9E8818} = {539F1400-B592-45AB-BD71-1A489E5316A9}
+		{A7FB2A6C-3CDF-447A-9AB8-9AAD68784149} = {A09CB28C-4B4A-4521-87EA-03394E9E8818}
+		{05B69369-FD25-41EA-87C3-201C8CB082BA} = {A7FB2A6C-3CDF-447A-9AB8-9AAD68784149}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DE80A563-983F-4551-8AA3-E07C3FE90C0F}

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eef8292c37c1442cb081048854a5f84d" Name="Customer" ZoomLevel="82" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Customer" Width="2.25" PointX="6.125" PointY="1" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_BillToCustomerID_Sales_Customers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.CustomerCategory" Width="2.625" PointX="1" PointY="6.375" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_CustomerCategoryID_Sales_CustomerCategories" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.BuyingGroup" Width="2" PointX="3.75" PointY="7.375" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_BuyingGroupID_Sales_BuyingGroups" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.City" Width="2" PointX="3.75" PointY="3.375" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_DeliveryCityID_Application_Cities" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_PostalCityID_Application_Cities" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.CustomerTransaction" Width="2.375" PointX="11.75" PointY="9" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_CustomerTransactions_CustomerID_Sales_Customers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Invoice" Width="2.375" PointX="11.75" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_CustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_CustomerTransactions_InvoiceID_Sales_Invoices" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Order" Width="2.5" PointX="8.75" PointY="3.125" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_CustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_OrderID_Sales_Orders" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_BackorderOrderID_Sales_Orders" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.SpecialDeal" Width="7.375" PointX="1" PointY="11.375" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_BuyingGroupID_Sales_BuyingGroups" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_CustomerCategoryID_Sales_CustomerCategories" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_CustomerID_Sales_Customers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.DeliveryMethod" Width="2" PointX="3.75" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_DeliveryMethodID_Application_DeliveryMethods" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_DeliveryMethodID_Application_DeliveryMethods" />
+        </Diagram>
+      <Diagram DiagramId="54c4a355139a4f739ae34d0b1919d1bb" Name="Person.Order" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Person" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_People_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Order" Width="2.5" PointX="3.25" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_BackorderOrderID_Sales_Orders" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_ContactPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_PickedByPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_SalespersonPersonID_Application_People" />
+      </Diagram>
+      <Diagram DiagramId="6ab82d813b714b65a6782a74c823f02d" Name="Person" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Person" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_People_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.CustomerCategory" Width="2.75" PointX="3.125" PointY="0.5" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_CustomerCategories_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.BuyingGroup" Width="2.375" PointX="3.125" PointY="1" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_BuyingGroups_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.DeliveryMethod" Width="1.875" PointX="3.125" PointY="1.5" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_DeliveryMethods_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.City" Width="1.875" PointX="3.125" PointY="8.75" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_Cities_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.CustomerTransaction" Width="1.875" PointX="3.125" PointY="2.5" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_CustomerTransactions_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.SpecialDeal" Width="2.875" PointX="3.125" PointY="6.125" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_BuyingGroupID_Sales_BuyingGroups" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_CustomerCategoryID_Sales_CustomerCategories" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.OrderLine" Width="1.875" PointX="3.125" PointY="3.875" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.PackageType" Width="2.25" PointX="3.125" PointY="3" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_PackageTypes_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StockItem" Width="2.25" PointX="3.125" PointY="4.75" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_StockItemID_Warehouse_StockItems" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.InvoiceLine" Width="1.5" PointX="6.375" PointY="3" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Country" Width="1.875" PointX="3.125" PointY="7" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_Countries_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StateProvince" Width="1.875" PointX="3.125" PointY="7.875" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_Cities_StateProvinceID_Application_StateProvinces" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_StateProvinces_CountryID_Application_Countries" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_StateProvinces_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Color" Width="1" PointX="3.125" PointY="5.625" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_Colors_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_ColorID_Warehouse_Colors" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.SupplierCategory" Width="1.875" PointX="3.125" PointY="9.25" IsExpanded="false" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_SupplierCategories_Application_People" />
+      </Diagram>
+      <Diagram DiagramId="66a68905efe2409e8313125409c76592" Name="Person.Invoice" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Person" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_People_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Invoice" Width="2.375" PointX="3" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_AccountsPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_ContactPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_PackedByPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_SalespersonPersonID_Application_People" />
+      </Diagram>
+      <Diagram DiagramId="f0aef3038299434f9c9fd9fb3f15fd80" Name="Person.Customer" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Person" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_People_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Customer" Width="2.25" PointX="3" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_AlternateContactPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_PrimaryContactPersonID_Application_People" />
+      </Diagram>
+      <Diagram DiagramId="c0cda51fde504f80b266e8e3559e523d" Name="Order" ZoomLevel="118" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.OrderLine" Width="1.875" PointX="12.75" PointY="0.5" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Order" Width="2.375" PointX="3.125" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_OrderID_Sales_Orders" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_BackorderOrderID_Sales_Orders" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Customer" Width="2.25" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_CustomerID_Sales_Customers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Invoice" Width="2.375" PointX="6" PointY="1" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_CustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_OrderID_Sales_Orders" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.PackageType" Width="1.5" PointX="8.5" PointY="1" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StockItem" Width="2" PointX="10.375" PointY="1.25" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_StockItemID_Warehouse_StockItems" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" />
+      </Diagram>
+      <Diagram DiagramId="1545fdb6b7a64d798edc739b206e4d14" Name="Invoice" ZoomLevel="117" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.InvoiceLine" Width="1.5" PointX="15.75" PointY="0.5" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Invoice" Width="2.375" PointX="8.875" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_InvoiceID_Sales_Invoices" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Customer" Width="2.125" PointX="3.5" PointY="0.625" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_BillToCustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_CustomerID_Sales_Customers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Order" Width="2.375" PointX="6" PointY="0.625" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_CustomerID_Sales_Customers" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_OrderID_Sales_Orders" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Orders_BackorderOrderID_Sales_Orders" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.DeliveryMethod" Width="2.375" PointX="0.75" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Customers_DeliveryMethodID_Application_DeliveryMethods" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_Invoices_DeliveryMethodID_Application_DeliveryMethods" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StockItem" Width="2" PointX="13.375" PointY="0.875" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.PackageType" Width="1.5" PointX="11.5" PointY="0.75" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" />
+      </Diagram>
+      <Diagram DiagramId="4d2198cee5dc4c359be0e7391d8d4503" Name="StateProvince" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Country" Width="2" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StateProvince" Width="2" PointX="3.25" PointY="1" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_StateProvinces_CountryID_Application_Countries" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.City" Width="2" PointX="5.75" PointY="1" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_Cities_StateProvinceID_Application_StateProvinces" />
+      </Diagram>
+      <Diagram DiagramId="9736c96fe59e4b81afa5171b60bf765d" Name="StockItem" ZoomLevel="116" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.StockItem" Width="2" PointX="4.75" PointY="1" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.PackageType" Width="1.5" PointX="2.75" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.InvoiceLine" Width="1.5" PointX="9.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Supplier" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_SupplierID_Purchasing_Suppliers" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Color" Width="1.5" PointX="2.75" PointY="3.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_ColorID_Warehouse_Colors" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.OrderLine" Width="2" PointX="7.25" PointY="0.625" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_OrderLines_StockItemID_Warehouse_StockItems" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.SpecialDeal" Width="2" PointX="7.25" PointY="5.375" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems" />
+      </Diagram>
+      <Diagram DiagramId="22b5c1a14e5b40e29e8074aa6550f60f" Name="Person.Supplier" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Person" Width="2.125" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Application_People_Application_People" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.Supplier" Width="2" PointX="3.125" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_AlternateContactPersonID_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_Application_People" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_PrimaryContactPersonID_Application_People" />
+      </Diagram>
+      <Diagram DiagramId="ec46278ee9774556956380fc1d9a23d0" Name="Supplier" ZoomLevel="134" >
+        <EntityTypeShape EntityType="WideWorldImportersModel.Supplier" Width="2" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.SupplierCategory" Width="2" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.DeliveryMethod" Width="2" PointX="0.5" PointY="3" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_DeliveryMethodID_Application_DeliveryMethods" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.City" Width="2" PointX="0.5" PointY="5.875" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_DeliveryCityID_Application_Cities" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Purchasing_Suppliers_PostalCityID_Application_Cities" />
+        <EntityTypeShape EntityType="WideWorldImportersModel.StockItem" Width="2" PointX="5.375" PointY="0.5" />
+        <AssociationConnector Association="WideWorldImportersModel.FK_Warehouse_StockItems_SupplierID_Purchasing_Suppliers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
