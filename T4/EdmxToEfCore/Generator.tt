@@ -1,0 +1,29 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="TechNoir.Data.Entity.Edmx.Serialization.dll" #>
+<#@ assembly name="TechNoir.Data.Entity.Edmx.Model.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Serialization" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Model" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Model.Conceptual" #>
+<#@ output extension=".txt" #>
+<#@ include file="T4.FileManager.VisualStudio19.ttinclude" #>
+<#@ include file="Generator.Model.ttinclude" #>
+<#@ include file="Generator.Context.ttinclude" #>
+<#
+const string edmx_path    = @"<< Path to your edmx file >>";
+const string @namespace   = "<< Model namespace >>";
+const string context_name = "<< Context name >>";
+const string folder       = "<< Sub folder for generated files, use null for root >>";
+
+var file_manager = T4FileManager.Create(this);
+
+var edmx = new Edmx(Host.ResolvePath(edmx_path));
+
+GenerateModel(file_manager, folder, edmx, @namespace);
+GenerateContext(file_manager, folder, edmx, @namespace, context_name, true);
+
+file_manager.Process();
+#>

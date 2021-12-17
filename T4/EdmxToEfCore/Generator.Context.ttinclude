@@ -1,0 +1,222 @@
+﻿<#@ assembly name="System.Core" #>
+<#@ assembly name="TechNoir.Data.Entity.Edmx.Serialization.dll" #>
+<#@ assembly name="TechNoir.Data.Entity.Edmx.Model.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Serialization" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Model" #>
+<#@ import namespace="TechNoir.Data.Entity.Edmx.Model.Conceptual" #>
+<#+
+    private void GenerateConfiguration(EntityType entity_type, bool keys_have_default_value_sql)
+    {
+        var mapping_fragment   = entity_type.EntitySet.EntitySetMapping.EntityTypeMappings.SelectMany(etm => etm.MappingFragments).Single();
+        var storage_entity_set = mapping_fragment.StorageEntitySet;
+#>
+            model_builder
+            .Entity<<#= entity_type.Name #>>
+            (
+                entity_builder
+                    =>
+                {
+                    entity_builder.ToTable("<#= storage_entity_set.Table #>", "<#= storage_entity_set.Schema #>");
+<#+
+        var key_strs = entity_type.KeyProperties.OrderBy(kp => kp.Name).Select(kp => $"e.{kp.Name}").ToList();
+        switch (key_strs.Count)
+        {
+            case 0:
+                break;
+            case 1:
+                WriteLine("");
+#>
+                    entity_builder.HasKey(e => <#= key_strs[0] #>);
+<#+
+                break;
+            default:
+                WriteLine("");
+#>
+                    entity_builder.HasKey(e => new { <#= key_strs.Aggregate((a, k) => $"{a}, {k}") #> });
+<#+
+                break;
+        }
+#>
+<#+
+        var properties
+            =
+        entity_type
+        .Properties
+        .OrderBy(p => p.Name)
+        .Select
+        (
+            p
+                =>
+            new
+            {
+                Property = p,
+                ValueGeneratedNever = p.IsKey && entity_type.KeyProperties.Count == 1 && p.StoreGeneratedPattern == TStoreGeneratedPattern.None && (p.CsType == "short" || p.CsType == "int" || p.CsType == "long")
+            }
+        )
+        .Where(p => p.Property.Name != p.Property.ColumnName || p.Property.StoreGeneratedPattern == TStoreGeneratedPattern.Computed || p.ValueGeneratedNever)
+        .ToList()
+        ;
+
+        if (properties.Any())
+        {
+            WriteLine("");
+            foreach (var property in properties)
+            {
+                var config = $"entity_builder.Property(e => e.{property.Property.Name})";
+                if (property.Property.Name != property.Property.ColumnName) config = $"{config}.HasColumnName(\"{property.Property.ColumnName}\")";
+                switch (property.Property.StoreGeneratedPattern)
+                {
+                    case TStoreGeneratedPattern.None:
+                        if (property.ValueGeneratedNever) config = keys_have_default_value_sql ? $"{config}.HasDefaultValueSql()" : $"{config}.ValueGeneratedNever()";
+                        break;
+                    case TStoreGeneratedPattern.Computed:
+                        config = $"{config}.HasComputedColumnSql()";
+                        break;
+                }
+#>
+                    <#= config #>;
+<#+
+            }
+        }
+
+        if (entity_type.ChildProperties.Any())
+        {
+            WriteLine("");
+            foreach (var child_property in entity_type.ChildProperties.OrderBy(cp => cp.Name))
+            {
+                var config       = $"entity_builder.HasOne(e => e.{child_property.Name}).WithOne(e => e.{child_property.ToEnd.EntityType.ParentProperties.Single(pp => pp.Association == child_property.Association).Name})";
+                var foreign_keys = child_property.Association.Constraint.Dependent.PropertyRefs.Select(pr => pr.Name).ToList();
+                switch (foreign_keys.Count)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        config = $"{config}.HasForeignKey<{child_property.ToEnd.EntityType.Name}>(e => e.{foreign_keys[0]})";
+                        break;
+                    default:
+                        config = $"{config}.HasForeignKey<{child_property.ToEnd.EntityType.Name}>(e => new {{ {key_strs.Aggregate((a, k) => $"{a}, {k}")} }})";
+                        break;
+                }
+
+                if (child_property.ToEnd.OnDeletes.Any(od => od.Action == TCsdlAction.Cascade))
+                    config = $"{config}.OnDelete(DeleteBehavior.ClientCascade)";
+#>
+                    <#= config #>;
+<#+
+            }
+        }
+
+        if (entity_type.ChildCollections.Any())
+        {
+            WriteLine("");
+            foreach (var child_collection in entity_type.ChildCollections.OrderBy(cp => cp.Name))
+            {
+                var config       = $"entity_builder.HasMany(e => e.{child_collection.Name}).WithOne(e => e.{child_collection.ToEnd.EntityType.ParentProperties.Single(pp => pp.Association == child_collection.Association).Name})";
+                var foreign_keys = child_collection.Association.Constraint.Dependent.PropertyRefs.Select(pr => pr.Name).ToList();
+                switch (foreign_keys.Count)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        config = $"{config}.HasForeignKey(e => e.{foreign_keys[0]})";
+                        break;
+                    default:
+                        config = $"{config}.HasForeignKey(e => new {{ {key_strs.Aggregate((a, k) => $"{a}, {k}")} }})";
+                        break;
+                }
+
+                if (child_collection.FromEnd.OnDeletes.Any(od => od.Action == TCsdlAction.Cascade))
+                    config = $"{config}.OnDelete(DeleteBehavior.ClientCascade)";
+#>
+                    <#= config #>;
+<#+
+            }
+        }
+
+        if (entity_type.ManyToManyCollections.Any())
+        {
+            WriteLine("");
+            foreach (var many_collection in entity_type.ManyToManyCollections.OrderBy(cp => cp.Name))
+            {
+                var association_set_mapping = many_collection.Association.AssociationSetMapping;
+#>
+                    entity_builder
+                    .HasMany(e => e.<#= many_collection.Name #>)
+                    .WithMany(e => e.<#= many_collection.ToEnd.EntityType.ManyToManyCollections.Single(mc => mc.Association == many_collection.Association && mc.FromRole == many_collection.ToRole).Name #>)
+                    .UsingEntity<Dictionary<string, object>>
+                    (
+                        "<#= association_set_mapping.StorageEntitySet.Schema #>.<#= association_set_mapping.StorageEntitySet.Table #>",
+                        right => right.HasOne<<#= many_collection.ToEnd.EntityType.Name #>>().WithMany().HasForeignKey("<#= association_set_mapping.EndProperties.Single(ep => ep.Name == many_collection.ToRole).ScalarProperties.First().ColumnName #>"),
+                        left  => left.HasOne<<#= many_collection.FromEnd.EntityType.Name #>>().WithMany().HasForeignKey("<#= association_set_mapping.EndProperties.Single(ep => ep.Name == many_collection.FromRole).ScalarProperties.First().ColumnName #>"),
+                        builder => builder.ToTable("<#= association_set_mapping.StorageEntitySet.Table #>", "<#= association_set_mapping.StorageEntitySet.Schema #>")
+                    )
+                    ;
+<#+
+            }
+        }
+#>
+                }
+            )
+            ;
+<#+
+    }
+
+private void GenerateContext(T4FileManager file_manager, string folder, Edmx edmx, string @namespace, string name, bool keys_have_default_value_sql)
+{
+    file_manager.StartNewFile($"{name}.cs", null, folder);
+#>
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+
+namespace <#= @namespace #>
+{
+    public partial class <#= name #><T> : DbContext
+        where T: <#= name #><T>
+    {
+        #region Sets
+
+<#+
+    var entity_types = edmx.Runtime.ConceptualSchema.EntityTypes.OrderBy(et => et.Name).ToList();
+
+    foreach (var entity_type in entity_types)
+    {
+#>
+        public DbSet<<#= entity_type.Name #>> <#= entity_type.EntitySet.Name #> { get; set; }
+<#+
+    }
+#>
+
+        #endregion
+        #region Configuration
+
+        protected override void OnModelCreating(ModelBuilder model_builder)
+        {
+<#+
+    GenerateConfiguration(entity_types.First(), keys_have_default_value_sql);
+    if (entity_types.Count > 1)
+    {
+        foreach (var entity_type in entity_types.Skip(1))
+        {
+            WriteLine("");
+            GenerateConfiguration(entity_type, keys_have_default_value_sql);
+        }
+    }
+#>
+        }
+
+        #endregion
+        #region Ctors
+
+        public <#= name #>() { }
+        public <#= name #>(DbContextOptions<T> options) : base(options) { }
+
+        #endregion
+    }
+}
+<#+
+    file_manager.FinishFile();
+}
+#>
