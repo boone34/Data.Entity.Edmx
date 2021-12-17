@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  elementFormDefault="qualified"
+  targetNamespace="http://schemas.technoir.net/ado/edm/Common.xsd"
+  xmlns="http://schemas.technoir.net/ado/edm/Common.xsd"
+  xmlns:mstns="http://schemas.technoir.net/ado/edm/Common.xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:simpleType name="TMultiplicity">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="0..1" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TParameterMode">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="In" />
+      <xs:enumeration value="Out" />
+      <xs:enumeration value="InOut" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

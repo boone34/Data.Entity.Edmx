@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net45;netstandard2.0;net5.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <PackageId>TechNoir.Data.Entity.Edmx.Serialization</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Boone</Authors>
+    <Company>TechNoir</Company>
+    <Product>TechNoir.Data.Entity.Edmx.Serialization</Product>
+    <Copyright>Copyright © TechNoir 2021</Copyright>
+    <Description>Edmx serializer</Description>
+    <AssemblyName>TechNoir.Data.Entity.Edmx.Serialization</AssemblyName>
+    <RootNamespace>TechNoir.Data.Entity.Edmx.Serialization</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags></PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
