@@ -13,17 +13,12 @@
 <#@ include file="Generator.Model.ttinclude" #>
 <#@ include file="Generator.Context.ttinclude" #>
 <#
-const string edmx_path    = @"<< Path to your edmx file >>";
-const string @namespace   = "<< Model namespace >>";
-const string context_name = "<< Context name >>";
-const string folder       = "<< Sub folder for generated files, use null for root >>";
-
+var config       = Support.GetConfig(Host.ResolvePath("EdmxToEfCore.ini"));
 var file_manager = T4FileManager.Create(this);
+var edmx         = new Edmx(Host.ResolvePath(config["EdmxPath"]));
 
-var edmx = new Edmx(Host.ResolvePath(edmx_path));
-
-GenerateModel(file_manager, folder, edmx, @namespace);
-GenerateContext(file_manager, folder, edmx, @namespace, context_name, true);
+GenerateModel(file_manager, edmx, config);
+GenerateContext(file_manager, edmx, config);
 
 file_manager.Process();
 #>

@@ -8,17 +8,17 @@
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model" #>
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model.Conceptual" #>
 <#+
-private void GenerateModel(T4FileManager file_manager, string folder, Edmx edmx, string @namespace)
+private void GenerateModel(T4FileManager file_manager, Edmx edmx, Dictionary<string, string> config)
 {
     foreach (var entity_type in edmx.Runtime.ConceptualSchema.EntityTypes)
     {
-        file_manager.StartNewFile($"{entity_type.Name}.cs", null, folder);
+        file_manager.StartNewFile($"{entity_type.Name}.cs", null, config["SubFolder"]);
 #>
 using System;
 using System.Collections.Generic;
 using NetTopologySuite.Geometries;
 
-namespace <#= @namespace #>
+namespace <#= config["Namespace"] #>
 {
     public partial class <#= entity_type.Name #>
     {

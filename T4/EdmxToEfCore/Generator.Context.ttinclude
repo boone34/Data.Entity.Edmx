@@ -164,17 +164,17 @@
 <#+
     }
 
-private void GenerateContext(T4FileManager file_manager, string folder, Edmx edmx, string @namespace, string name, bool keys_have_default_value_sql)
+private void GenerateContext(T4FileManager file_manager, Edmx edmx, Dictionary<string, string> config)
 {
-    file_manager.StartNewFile($"{name}.cs", null, folder);
+    file_manager.StartNewFile($"{config["ContextName"]}.cs", null, config["SubFolder"]);
 #>
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace <#= @namespace #>
+namespace <#= config["Namespace"] #>
 {
-    public partial class <#= name #><T> : DbContext
-        where T: <#= name #><T>
+    public partial class <#= config["ContextName"] #><T> : DbContext
+        where T: <#= config["ContextName"] #><T>
     {
         #region Sets
 
@@ -195,6 +195,7 @@ namespace <#= @namespace #>
         protected override void OnModelCreating(ModelBuilder model_builder)
         {
 <#+
+    var keys_have_default_value_sql = config.ContainsKey("KeysHaveDefaultValueSql") && config["KeysHaveDefaultValueSql"] != null && bool.Parse(config["KeysHaveDefaultValueSql"]);
     GenerateConfiguration(entity_types.First(), keys_have_default_value_sql);
     if (entity_types.Count > 1)
     {
@@ -210,8 +211,8 @@ namespace <#= @namespace #>
         #endregion
         #region Ctors
 
-        public <#= name #>() { }
-        public <#= name #>(DbContextOptions<T> options) : base(options) { }
+        public <#= config["Namespace"] #>() { }
+        public <#= config["Namespace"] #>(DbContextOptions<T> options) : base(options) { }
 
         #endregion
     }
