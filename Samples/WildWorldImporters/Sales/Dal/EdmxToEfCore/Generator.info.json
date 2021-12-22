@@ -1,0 +1,124 @@
+{
+  "FilesToGenerate": [
+    {
+      "Filename": "BuyingGroup.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "CustomerCategory.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Customer.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "CustomerTransaction.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "InvoiceLine.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Invoice.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "OrderLine.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Order.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "SpecialDeal.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Person.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "DeliveryMethod.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "City.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "PackageType.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "StockItem.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Country.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "StateProvince.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Supplier.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "Color.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "SupplierCategory.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    },
+    {
+      "Filename": "SalesContext.cs",
+      "Project": null,
+      "Path": null,
+      "Properties": {}
+    }
+  ]
+}

@@ -2,19 +2,28 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <PackageId>WildWorldImporters.Sales.Dal</PackageId>
     <Version>1.0.0</Version>
-    <Authors>Boone</Authors>
-    <Company>TechNoir</Company>
-    <Product>WildWorldImporters.Sales.Dal</Product>
-    <Copyright>Copyright © TechNoir 2021</Copyright>
-    <Description>WildWorldImporters Sales Dal</Description>
+    <Product>Dal</Product>
     <AssemblyName>WildWorldImporters.Sales.Dal</AssemblyName>
     <RootNamespace>WildWorldImporters.Sales.Dal</RootNamespace>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.13" />
     <PackageReference Include="NetTopologySuite" Version="2.4.0" />
-    <PackageReference Include="TechNoir.Data.Entity.Edmx.T4" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="EdmxToEfCore\Generator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Generator.txt</LastGenOutput>
+    </None>
+    <None Update="EdmxToEfCore\Generator.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Generator.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 </Project>
