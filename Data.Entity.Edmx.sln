@@ -17,9 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sales", "Sales", "{A7FB2A6C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edmx", "Samples\WildWorldImporters\Sales\Edmx\Edmx.csproj", "{05B69369-FD25-41EA-87C3-201C8CB082BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Samples\WildWorldImporters\Sales\Dal\Dal.csproj", "{A547FC24-C97D-45D6-8BC6-236188A7392D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal", "Samples\WildWorldImporters\Sales\Dal\Dal.csproj", "{A547FC24-C97D-45D6-8BC6-236188A7392D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal.SqlServer", "Samples\WildWorldImporters\Sales\Dal.SqlServer\Dal.SqlServer.csproj", "{D346B561-5303-4970-9945-7D7EBED47603}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dal.SqlServer", "Samples\WildWorldImporters\Sales\Dal.SqlServer\Dal.SqlServer.csproj", "{D346B561-5303-4970-9945-7D7EBED47603}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83408BBB-2028-487E-A0AE-D064C277474F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Pictures\ProjectSelector.png = ..\..\..\..\Pictures\ProjectSelector.png
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
