@@ -40,4 +40,13 @@ Before generating the model you need to configure things by editing the *Generat
 
 For an example of using this file see the *WideWorldImporters* sample.
 
+Once configured generate the model by *Right Clicking Generator.tt* and selecting *Run Custom Tool*. 
+
+![Run Generator](https://raw.githubusercontent.com/boone34/Data.Entity.Edmx/master/Assets/ProjectTemplates/RunGenerator.png)
+
+Before compiling the project add the following nuget packages (I may add these to the project template in the future):
+
+ - Microsoft.EntityFrameworkCore.Relational
+ - NetTopologySuite
+### Customize the DbContext
 # Nitty Gritty
