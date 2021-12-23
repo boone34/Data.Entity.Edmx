@@ -19,5 +19,8 @@ Download the [*Edmx To Entity Framework Core*](https://github.com/boone34/Data.E
 I have found that this can be done by copying the *Edmx To Entity Framework Core.zip* file to your *Documents\Visual Studio 2019\Templates\ProjectTemplates* folder and restarting Visual Studio. **Note:** I have found that it does not work if you copy it to a sub folder such as *Visual C#* but your mileage may differ.
 ### Create the Model Project
 Create the model project using the *Edmx To Entity Framework Core* project template. Finding the template can be a little tedious using visual studio as you cannot search for it or use project type filters. Also project templates do not appear to be sorted in any particular order. So set project type filters to all and scroll until you find the project template.
-![Project Selector](ProjectSelector.png)
+
+![Project Selector](https://raw.githubusercontent.com/boone34/Data.Entity.Edmx/master/Assets/ProjectTemplates/ProjectSelector.png)
+
+It may appear at the top labeled as *new* or towards the end.
 # Nitty Gritty
