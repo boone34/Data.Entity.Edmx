@@ -3,6 +3,7 @@
 		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
 		<AssemblyName>WildWorldImporters.Sales.Dal.SqlServer</AssemblyName>
 		<RootNamespace>WildWorldImporters.Sales.Dal.SqlServer</RootNamespace>
+		<Version>1.0.1</Version>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.13" />

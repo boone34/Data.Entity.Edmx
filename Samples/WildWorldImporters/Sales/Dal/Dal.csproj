@@ -2,8 +2,8 @@
 	<PropertyGroup>
 		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
-		<Version>1.0.0</Version>
-		<Product>Dal</Product>
+		<Version>1.0.1</Version>
+		<Product>WildWorldImporters.Sales.Dal</Product>
 		<AssemblyName>WildWorldImporters.Sales.Dal</AssemblyName>
 		<RootNamespace>WildWorldImporters.Sales.Dal</RootNamespace>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -11,10 +11,10 @@
 	<ItemGroup>
 		<PackageReference Include="NetTopologySuite" Version="2.4.0" />
 	</ItemGroup>
-	<ItemGroup Condition = "'$(TargetFramework)' == 'net5.0'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.13" />
 	</ItemGroup>
-	<ItemGroup Condition = "'$(TargetFramework)' == 'net6.0'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
 	</ItemGroup>
 	<ItemGroup>
