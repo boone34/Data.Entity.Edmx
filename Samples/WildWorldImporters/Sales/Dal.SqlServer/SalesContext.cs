@@ -173,7 +173,8 @@ namespace WildWorldImporters.Sales.Dal.SqlServer
             return (int)reader["NextId"];
         }
 
-        public SalesContext() { }
-        public SalesContext(DbContextOptions<SalesContext> options) : base(options) { }
+        public SalesContext()                                                                                                                     { }
+        public SalesContext(DbContextOptions<SalesContext> options) : base(options)                                                               { }
+        public SalesContext(string connection_string) : this(new DbContextOptionsBuilder<SalesContext>().UseSqlServer(connection_string).Options) { }
     }
 }
