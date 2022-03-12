@@ -12,7 +12,7 @@ This greatly facilitates upgrading large entity framework 6.0 models to EFC wher
 ## Requirements
  1. The database must already exist. This tooling will not create an EFC model that will create a database for you.
  2. The tooling uses T4 templates in Visual Studio to create the model. It has only been tested in Visual Studio 2019.
- 3. The model generated targets EFC 5.0 which is required for how it implements many to many relationships. It has not been tested with EFC 6.0.
+ 3. The model generated targets EFC 5.0 & EFC 6.0 which are required for how they implement many to many relationships.
 ## Create a Model
 ### Install the Project Template
 Download the [*Edmx To Entity Framework Core*](https://github.com/boone34/Data.Entity.Edmx/raw/master/Assets/ProjectTemplates/Edmx%20To%20Entity%20Framework%20Core.zip) project template and install it in Visual Studio.
