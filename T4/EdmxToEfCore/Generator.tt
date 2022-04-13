@@ -9,7 +9,7 @@
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model" #>
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model.Conceptual" #>
 <#@ output extension=".txt" #>
-<#@ include file="T4.FileManager.VisualStudio19.ttinclude" #>
+<#@ include file="T4.FileManager.VisualStudio.ttinclude" #>
 <#@ include file="Generator.Model.ttinclude" #>
 <#@ include file="Generator.Context.ttinclude" #>
 <#

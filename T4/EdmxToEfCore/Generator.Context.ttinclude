@@ -8,7 +8,9 @@
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model" #>
 <#@ import namespace="TechNoir.Data.Entity.Edmx.Model.Conceptual" #>
 <#+
-    private void GenerateConfiguration(EntityType entity_type, bool keys_have_default_value_sql)
+	private static void AppendConfig<T>(Dictionary<T, string> dictionary, T item, string append) => dictionary[item] = dictionary.ContainsKey(item) ? $"{dictionary[item]}.{append}" : append;
+
+	private void GenerateConfiguration(EntityType entity_type, bool keys_have_default_value_sql)
     {
         var mapping_fragment   = entity_type.EntitySet.EntitySetMapping.EntityTypeMappings.SelectMany(etm => etm.MappingFragments).Single();
         var storage_entity_set = mapping_fragment.StorageEntitySet;
@@ -41,46 +43,39 @@
         }
 #>
 <#+
-        var properties
-            =
-        entity_type
-        .Properties
-        .OrderBy(p => p.Name)
-        .Select
-        (
-            p
-                =>
-            new
-            {
-                Property = p,
-                ValueGeneratedNever = p.IsKey && entity_type.KeyProperties.Count == 1 && p.StoreGeneratedPattern == TStoreGeneratedPattern.None && (p.CsType == "short" || p.CsType == "int" || p.CsType == "long")
-            }
-        )
-        .Where(p => p.Property.Name != p.Property.ColumnName || p.Property.StoreGeneratedPattern == TStoreGeneratedPattern.Computed || p.ValueGeneratedNever)
-        .ToList()
-        ;
+        var property_configs = new Dictionary<EntityProperty, string>();
+		foreach (var property in entity_type.Properties.OrderBy(p => p.Name))
+		{
+            if (property.Name != property.ColumnName) AppendConfig(property_configs, property, $"HasColumnName(\"{property.ColumnName}\")");
 
-        if (properties.Any())
-        {
-            WriteLine("");
-            foreach (var property in properties)
+            switch (property.StoreGeneratedPattern)
             {
-                var config = $"entity_builder.Property(e => e.{property.Property.Name})";
-                if (property.Property.Name != property.Property.ColumnName) config = $"{config}.HasColumnName(\"{property.Property.ColumnName}\")";
-                switch (property.Property.StoreGeneratedPattern)
-                {
-                    case TStoreGeneratedPattern.None:
-                        if (property.ValueGeneratedNever) config = keys_have_default_value_sql ? $"{config}.HasDefaultValueSql()" : $"{config}.ValueGeneratedNever()";
-                        break;
-                    case TStoreGeneratedPattern.Computed:
-                        config = $"{config}.HasComputedColumnSql()";
-                        break;
-                }
-#>
-                    <#= config #>;
-<#+
+                case TStoreGeneratedPattern.None:
+					if (property.IsKey && entity_type.KeyProperties.Count == 1 && property.StoreGeneratedPattern == TStoreGeneratedPattern.None && (property.CsType == "short" || property.CsType == "int" || property.CsType == "long"))
+						AppendConfig(property_configs, property, keys_have_default_value_sql ? "HasDefaultValueSql()" : "ValueGeneratedNever()");
+                    break;
+                case TStoreGeneratedPattern.Computed:
+					AppendConfig(property_configs, property, "HasComputedColumnSql()");
+                    break;
             }
-        }
+
+			if (property.CsType == "string" || property.CsType == "byte []")
+			{
+                    if (!property.Nullable)                                   AppendConfig(property_configs, property, "IsRequired()");
+                    if (int.TryParse(property.MaxLength, out var max_length)) AppendConfig(property_configs, property, $"HasMaxLength({max_length})");
+			}
+		}
+
+		if (property_configs.Any())
+		{
+            WriteLine("");
+			foreach (var property_config in property_configs)
+			{
+#>
+                    <#= $"entity_builder.Property(e => e.{property_config.Key.Name}).{property_config.Value}" #>;
+<#+
+			}
+		}
 
         if (entity_type.ChildProperties.Any())
         {

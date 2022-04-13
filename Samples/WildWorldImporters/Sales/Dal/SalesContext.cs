@@ -45,7 +45,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("BuyingGroupID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("BuyingGroupName");
+                    entity_builder.Property(e => e.Name).HasColumnName("BuyingGroupName").IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.Customers).WithOne(e => e.BuyingGroup).HasForeignKey(e => e.BuyingGroupId);
                     entity_builder.HasMany(e => e.SpecialDeals).WithOne(e => e.BuyingGroup).HasForeignKey(e => e.BuyingGroupId);
@@ -65,7 +65,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("CityID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("CityName");
+                    entity_builder.Property(e => e.Name).HasColumnName("CityName").IsRequired().HasMaxLength(50);
                     entity_builder.Property(e => e.StateProvinceId).HasColumnName("StateProvinceID");
 
                     entity_builder.HasMany(e => e.DeliveryCustomers).WithOne(e => e.DeliveryCity).HasForeignKey(e => e.DeliveryCityId);
@@ -88,7 +88,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("ColorID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("ColorName");
+                    entity_builder.Property(e => e.Name).HasColumnName("ColorName").IsRequired().HasMaxLength(20);
 
                     entity_builder.HasMany(e => e.StockItems).WithOne(e => e.Color).HasForeignKey(e => e.ColorId);
                 }
@@ -105,9 +105,15 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
+                    entity_builder.Property(e => e.Continent).IsRequired().HasMaxLength(30);
+                    entity_builder.Property(e => e.CountryType).HasMaxLength(20);
+                    entity_builder.Property(e => e.FormalName).IsRequired().HasMaxLength(60);
                     entity_builder.Property(e => e.Id).HasColumnName("CountryID").HasDefaultValueSql();
+                    entity_builder.Property(e => e.IsoAlpha3Code).HasMaxLength(3);
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("CountryName");
+                    entity_builder.Property(e => e.Name).HasColumnName("CountryName").IsRequired().HasMaxLength(60);
+                    entity_builder.Property(e => e.Region).IsRequired().HasMaxLength(30);
+                    entity_builder.Property(e => e.Subregion).IsRequired().HasMaxLength(30);
 
                     entity_builder.HasMany(e => e.StateProvinces).WithOne(e => e.Country).HasForeignKey(e => e.CountryId);
                 }
@@ -128,13 +134,24 @@ namespace WildWorldImporters.Sales.Dal
                     entity_builder.Property(e => e.BillToCustomerId).HasColumnName("BillToCustomerID");
                     entity_builder.Property(e => e.BuyingGroupId).HasColumnName("BuyingGroupID");
                     entity_builder.Property(e => e.CustomerCategoryId).HasColumnName("CustomerCategoryID");
+                    entity_builder.Property(e => e.DeliveryAddressLine1).IsRequired().HasMaxLength(60);
+                    entity_builder.Property(e => e.DeliveryAddressLine2).HasMaxLength(60);
                     entity_builder.Property(e => e.DeliveryCityId).HasColumnName("DeliveryCityID");
                     entity_builder.Property(e => e.DeliveryMethodId).HasColumnName("DeliveryMethodID");
+                    entity_builder.Property(e => e.DeliveryPostalCode).IsRequired().HasMaxLength(10);
+                    entity_builder.Property(e => e.DeliveryRun).HasMaxLength(5);
+                    entity_builder.Property(e => e.FaxNumber).IsRequired().HasMaxLength(20);
                     entity_builder.Property(e => e.Id).HasColumnName("CustomerID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("CustomerName");
+                    entity_builder.Property(e => e.Name).HasColumnName("CustomerName").IsRequired().HasMaxLength(100);
+                    entity_builder.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(20);
+                    entity_builder.Property(e => e.PostalAddressLine1).IsRequired().HasMaxLength(60);
+                    entity_builder.Property(e => e.PostalAddressLine2).HasMaxLength(60);
                     entity_builder.Property(e => e.PostalCityId).HasColumnName("PostalCityID");
+                    entity_builder.Property(e => e.PostalPostalCode).IsRequired().HasMaxLength(10);
                     entity_builder.Property(e => e.PrimaryContactPersonId).HasColumnName("PrimaryContactPersonID");
+                    entity_builder.Property(e => e.RunPosition).HasMaxLength(5);
+                    entity_builder.Property(e => e.WebsiteURL).IsRequired().HasMaxLength(256);
 
                     entity_builder.HasMany(e => e.BillToCustomers).WithOne(e => e.BillToCustomer).HasForeignKey(e => e.BillToCustomerId);
                     entity_builder.HasMany(e => e.BillToInvoices).WithOne(e => e.BillToCustomer).HasForeignKey(e => e.BillToCustomerId);
@@ -158,7 +175,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("CustomerCategoryID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("CustomerCategoryName");
+                    entity_builder.Property(e => e.Name).HasColumnName("CustomerCategoryName").IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.Customers).WithOne(e => e.CustomerCategory).HasForeignKey(e => e.CustomerCategoryId);
                     entity_builder.HasMany(e => e.SpecialDeals).WithOne(e => e.CustomerCategory).HasForeignKey(e => e.CustomerCategoryId);
@@ -199,7 +216,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("DeliveryMethodID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("DeliveryMethodName");
+                    entity_builder.Property(e => e.Name).HasColumnName("DeliveryMethodName").IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.Customers).WithOne(e => e.DeliveryMethod).HasForeignKey(e => e.DeliveryMethodId);
                     entity_builder.HasMany(e => e.Invoices).WithOne(e => e.DeliveryMethod).HasForeignKey(e => e.DeliveryMethodId);
@@ -221,14 +238,17 @@ namespace WildWorldImporters.Sales.Dal
                     entity_builder.Property(e => e.AccountsPersonId).HasColumnName("AccountsPersonID");
                     entity_builder.Property(e => e.BillToCustomerId).HasColumnName("BillToCustomerID");
                     entity_builder.Property(e => e.ConfirmedDeliveryTime).HasComputedColumnSql();
-                    entity_builder.Property(e => e.ConfirmedReceivedBy).HasComputedColumnSql();
+                    entity_builder.Property(e => e.ConfirmedReceivedBy).HasComputedColumnSql().HasMaxLength(4000);
                     entity_builder.Property(e => e.ContactPersonId).HasColumnName("ContactPersonID");
                     entity_builder.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                    entity_builder.Property(e => e.CustomerPurchaseOrderNumber).HasMaxLength(20);
                     entity_builder.Property(e => e.DeliveryMethodId).HasColumnName("DeliveryMethodID");
+                    entity_builder.Property(e => e.DeliveryRun).HasMaxLength(5);
                     entity_builder.Property(e => e.Id).HasColumnName("InvoiceID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
                     entity_builder.Property(e => e.OrderId).HasColumnName("OrderID");
                     entity_builder.Property(e => e.PackedByPersonId).HasColumnName("PackedByPersonID");
+                    entity_builder.Property(e => e.RunPosition).HasMaxLength(5);
                     entity_builder.Property(e => e.SalespersonPersonId).HasColumnName("SalespersonPersonID");
 
                     entity_builder.HasMany(e => e.CustomerTransactions).WithOne(e => e.Invoice).HasForeignKey(e => e.InvoiceId);
@@ -247,6 +267,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
+                    entity_builder.Property(e => e.Description).IsRequired().HasMaxLength(100);
                     entity_builder.Property(e => e.Id).HasColumnName("InvoiceLineID").HasDefaultValueSql();
                     entity_builder.Property(e => e.InvoiceId).HasColumnName("InvoiceID");
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
@@ -269,6 +290,7 @@ namespace WildWorldImporters.Sales.Dal
                     entity_builder.Property(e => e.BackorderOrderId).HasColumnName("BackorderOrderID");
                     entity_builder.Property(e => e.ContactPersonId).HasColumnName("ContactPersonID");
                     entity_builder.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                    entity_builder.Property(e => e.CustomerPurchaseOrderNumber).HasMaxLength(20);
                     entity_builder.Property(e => e.Id).HasColumnName("OrderID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
                     entity_builder.Property(e => e.PickedByPersonId).HasColumnName("PickedByPersonID");
@@ -291,6 +313,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
+                    entity_builder.Property(e => e.Description).IsRequired().HasMaxLength(100);
                     entity_builder.Property(e => e.Id).HasColumnName("OrderLineID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
                     entity_builder.Property(e => e.OrderId).HasColumnName("OrderID");
@@ -312,7 +335,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("PackageTypeID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("PackageTypeName");
+                    entity_builder.Property(e => e.Name).HasColumnName("PackageTypeName").IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.InvoiceLines).WithOne(e => e.PackageType).HasForeignKey(e => e.PackageTypeId);
                     entity_builder.HasMany(e => e.OrderLines).WithOne(e => e.PackageType).HasForeignKey(e => e.PackageTypeId);
@@ -332,10 +355,16 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
+                    entity_builder.Property(e => e.EmailAddress).HasMaxLength(256);
+                    entity_builder.Property(e => e.FaxNumber).HasMaxLength(20);
+                    entity_builder.Property(e => e.FullName).IsRequired().HasMaxLength(50);
                     entity_builder.Property(e => e.Id).HasColumnName("PersonID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
+                    entity_builder.Property(e => e.LogonName).HasMaxLength(50);
                     entity_builder.Property(e => e.OtherLanguages).HasComputedColumnSql();
-                    entity_builder.Property(e => e.SearchName).HasComputedColumnSql();
+                    entity_builder.Property(e => e.PhoneNumber).HasMaxLength(20);
+                    entity_builder.Property(e => e.PreferredName).IsRequired().HasMaxLength(50);
+                    entity_builder.Property(e => e.SearchName).HasComputedColumnSql().IsRequired().HasMaxLength(101);
 
                     entity_builder.HasMany(e => e.AccountsInvoices).WithOne(e => e.AccountsPerson).HasForeignKey(e => e.AccountsPersonId);
                     entity_builder.HasMany(e => e.AlternateContactCustomers).WithOne(e => e.AlternateContactPerson).HasForeignKey(e => e.AlternateContactPersonId);
@@ -384,6 +413,7 @@ namespace WildWorldImporters.Sales.Dal
                     entity_builder.Property(e => e.BuyingGroupId).HasColumnName("BuyingGroupID");
                     entity_builder.Property(e => e.CustomerCategoryId).HasColumnName("CustomerCategoryID");
                     entity_builder.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                    entity_builder.Property(e => e.DealDescription).IsRequired().HasMaxLength(30);
                     entity_builder.Property(e => e.Id).HasColumnName("SpecialDealID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
                     entity_builder.Property(e => e.StockGroupId).HasColumnName("StockGroupID");
@@ -402,11 +432,12 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
-                    entity_builder.Property(e => e.Code).HasColumnName("StateProvinceCode");
+                    entity_builder.Property(e => e.Code).HasColumnName("StateProvinceCode").IsRequired().HasMaxLength(5);
                     entity_builder.Property(e => e.CountryId).HasColumnName("CountryID");
                     entity_builder.Property(e => e.Id).HasColumnName("StateProvinceID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("StateProvinceName");
+                    entity_builder.Property(e => e.Name).HasColumnName("StateProvinceName").IsRequired().HasMaxLength(50);
+                    entity_builder.Property(e => e.SalesTerritory).IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.Cities).WithOne(e => e.StateProvince).HasForeignKey(e => e.StateProvinceId);
                 }
@@ -423,12 +454,15 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.HasKey(e => e.Id);
 
+                    entity_builder.Property(e => e.Barcode).HasMaxLength(50);
+                    entity_builder.Property(e => e.Brand).HasMaxLength(50);
                     entity_builder.Property(e => e.ColorId).HasColumnName("ColorID");
                     entity_builder.Property(e => e.Id).HasColumnName("StockItemID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("StockItemName");
+                    entity_builder.Property(e => e.Name).HasColumnName("StockItemName").IsRequired().HasMaxLength(100);
                     entity_builder.Property(e => e.OuterPackageTypeId).HasColumnName("OuterPackageID");
-                    entity_builder.Property(e => e.SearchDetails).HasComputedColumnSql();
+                    entity_builder.Property(e => e.SearchDetails).HasComputedColumnSql().IsRequired();
+                    entity_builder.Property(e => e.Size).HasMaxLength(20);
                     entity_builder.Property(e => e.SupplierId).HasColumnName("SupplierID");
                     entity_builder.Property(e => e.Tags).HasComputedColumnSql();
                     entity_builder.Property(e => e.UnitPackageTypeId).HasColumnName("UnitPackageID");
@@ -451,14 +485,29 @@ namespace WildWorldImporters.Sales.Dal
                     entity_builder.HasKey(e => e.Id);
 
                     entity_builder.Property(e => e.AlternateContactPersonId).HasColumnName("AlternateContactPersonID");
+                    entity_builder.Property(e => e.BankAccountBranch).HasMaxLength(50);
+                    entity_builder.Property(e => e.BankAccountCode).HasMaxLength(20);
+                    entity_builder.Property(e => e.BankAccountName).HasMaxLength(50);
+                    entity_builder.Property(e => e.BankAccountNumber).HasMaxLength(20);
+                    entity_builder.Property(e => e.BankInternationalCode).HasMaxLength(20);
+                    entity_builder.Property(e => e.DeliveryAddressLine1).IsRequired().HasMaxLength(60);
+                    entity_builder.Property(e => e.DeliveryAddressLine2).HasMaxLength(60);
                     entity_builder.Property(e => e.DeliveryCityId).HasColumnName("DeliveryCityID");
                     entity_builder.Property(e => e.DeliveryMethodId).HasColumnName("DeliveryMethodID");
+                    entity_builder.Property(e => e.DeliveryPostalCode).IsRequired().HasMaxLength(10);
+                    entity_builder.Property(e => e.FaxNumber).IsRequired().HasMaxLength(20);
                     entity_builder.Property(e => e.Id).HasColumnName("SupplierID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("SupplierName");
+                    entity_builder.Property(e => e.Name).HasColumnName("SupplierName").IsRequired().HasMaxLength(100);
+                    entity_builder.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(20);
+                    entity_builder.Property(e => e.PostalAddressLine1).IsRequired().HasMaxLength(60);
+                    entity_builder.Property(e => e.PostalAddressLine2).HasMaxLength(60);
                     entity_builder.Property(e => e.PostalCityId).HasColumnName("PostalCityID");
+                    entity_builder.Property(e => e.PostalPostalCode).IsRequired().HasMaxLength(10);
                     entity_builder.Property(e => e.PrimaryContactPersonId).HasColumnName("PrimaryContactPersonID");
                     entity_builder.Property(e => e.SupplierCategoryId).HasColumnName("SupplierCategoryID");
+                    entity_builder.Property(e => e.SupplierReference).HasMaxLength(20);
+                    entity_builder.Property(e => e.WebsiteURL).IsRequired().HasMaxLength(256);
 
                     entity_builder.HasMany(e => e.StockItems).WithOne(e => e.Supplier).HasForeignKey(e => e.SupplierId);
                 }
@@ -477,7 +526,7 @@ namespace WildWorldImporters.Sales.Dal
 
                     entity_builder.Property(e => e.Id).HasColumnName("SupplierCategoryID").HasDefaultValueSql();
                     entity_builder.Property(e => e.LastEditedById).HasColumnName("LastEditedBy");
-                    entity_builder.Property(e => e.Name).HasColumnName("SupplierCategoryName");
+                    entity_builder.Property(e => e.Name).HasColumnName("SupplierCategoryName").IsRequired().HasMaxLength(50);
 
                     entity_builder.HasMany(e => e.Suppliers).WithOne(e => e.SupplierCategory).HasForeignKey(e => e.SupplierCategoryId);
                 }
