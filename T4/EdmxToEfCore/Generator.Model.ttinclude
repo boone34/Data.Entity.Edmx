@@ -16,7 +16,6 @@ private void GenerateModel(T4FileManager file_manager, Edmx edmx, Dictionary<str
 #>
 using System;
 using System.Collections.Generic;
-using NetTopologySuite.Geometries;
 
 namespace <#= config["Namespace"] #>
 {
@@ -31,9 +30,27 @@ namespace <#= config["Namespace"] #>
 <#+
             foreach (var property in entity_type.Properties)
             {
+	            if (property.CsType == "string")
+	            {
+		            if (property.Nullable)
+		            {
+#>
+        public virtual <#= property.CsType #>? <#= property.Name #> { get; set; }
+<#+
+		            }
+		            else
+		            {
+#>
+        public virtual <#= property.CsType #> <#= property.Name #> { get; set; } = null!;
+<#+
+		            }
+	            }
+	            else
+	            {
 #>
         public virtual <#= property.CsType #> <#= property.Name #> { get; set; }
 <#+
+	            }
             }
 #>
 
@@ -49,9 +66,18 @@ namespace <#= config["Namespace"] #>
 <#+
             foreach (var parent_property in entity_type.ParentProperties)
             {
+	            if (parent_property.ToEnd.Multiplicity == Multiplicity.ZeroOrOne)
+	            {
 #>
-        public virtual <#= parent_property.ToEnd.EntityType.Name #> <#= parent_property.Name #> { get; set; }
+        public virtual <#= parent_property.ToEnd.EntityType.Name #>? <#= parent_property.Name #> { get; set; }
 <#+
+	            }
+	            else
+	            {
+#>
+        public virtual <#= parent_property.ToEnd.EntityType.Name #> <#= parent_property.Name #> { get; set; } = null!;
+<#+
+	            }
             }
 #>
 
@@ -68,7 +94,7 @@ namespace <#= config["Namespace"] #>
             foreach (var child_property in entity_type.ChildProperties)
             {
 #>
-        public virtual <#= child_property.ToEnd.EntityType.Name #> <#= child_property.Name #> { get; set; }
+        public virtual <#= child_property.ToEnd.EntityType.Name #>? <#= child_property.Name #> { get; set; }
 <#+
             }
 #>
@@ -86,7 +112,7 @@ namespace <#= config["Namespace"] #>
             foreach (var child_collection in entity_type.ChildCollections)
             {
 #>
-        public virtual ICollection<<#= child_collection.ToEnd.EntityType.Name #>> <#= child_collection.Name #> { get; set; }
+        public virtual ICollection<<#= child_collection.ToEnd.EntityType.Name #>> <#= child_collection.Name #> { get; set; } = null!;
 <#+
             }
 #>
@@ -104,7 +130,7 @@ namespace <#= config["Namespace"] #>
             foreach (var many_to_many_collection in entity_type.ManyToManyCollections)
             {
 #>
-        public virtual ICollection<<#= many_to_many_collection.ToEnd.EntityType.Name #>> <#= many_to_many_collection.Name #> { get; set; }
+        public virtual ICollection<<#= many_to_many_collection.ToEnd.EntityType.Name #>> <#= many_to_many_collection.Name #> { get; set; } = null!;
 <#+
             }
 #>
