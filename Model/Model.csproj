@@ -3,11 +3,11 @@
     <TargetFrameworks>net45;netstandard2.0;net5.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <PackageId>TechNoir.Data.Entity.Edmx.Model</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Boone</Authors>
     <Company>TechNoir</Company>
     <Product>TechNoir.Data.Entity.Edmx.Model</Product>
-    <Copyright>Copyright © TechNoir 2021</Copyright>
+    <Copyright>Copyright © TechNoir 2022</Copyright>
     <Description>Edmx parser/model</Description>
     <AssemblyName>TechNoir.Data.Entity.Edmx.Model</AssemblyName>
     <RootNamespace>TechNoir.Data.Entity.Edmx.Model</RootNamespace>
@@ -22,7 +22,7 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <PackageReleaseNotes>Add Support.GetConfig</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Model.Storage.EntitySet.DefiningQuery</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\License.txt">
@@ -42,6 +42,6 @@
   <Target Condition="'$(TargetFramework)' == 'net45'"
           Name="PostBuild"
           AfterTargets="PostBuildEvent">
-    <Exec Command="copy $(TargetPath) $(SolutionDir)T4\EdmxToEfCore" />
+    <Exec Command="copy &quot;$(TargetPath)&quot; &quot;$(SolutionDir)T4\EdmxToEfCore&quot;" />
   </Target>
 </Project>

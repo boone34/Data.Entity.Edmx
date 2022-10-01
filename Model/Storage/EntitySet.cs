@@ -12,7 +12,8 @@ namespace TechNoir.Data.Entity.Edmx.Model.Storage
         public string          Name            { get; }
         public string          Table           { get; }
         public string          EntityTypeName  { get; }
-        public TSourceType     SourceType      { get;}
+        public TSourceType     SourceType      { get; }
+        public string          DefiningQuery  { get; }
 
         private EntityType _EntityType;
         public  EntityType EntityType => _EntityType ??= EntityContainer.Schema.EntityTypes.Single(et => et.Name == EntityTypeName.StripNamespace());
@@ -28,6 +29,7 @@ namespace TechNoir.Data.Entity.Edmx.Model.Storage
             Table           = string.IsNullOrWhiteSpace(t_ssdl_entity_set.Table) ? Name : t_ssdl_entity_set.Table;
             EntityTypeName  = t_ssdl_entity_set.EntityType;
             SourceType      = t_ssdl_entity_set.Type;
+            DefiningQuery   = t_ssdl_entity_set.DefiningQuery;
         }
     }
 }
